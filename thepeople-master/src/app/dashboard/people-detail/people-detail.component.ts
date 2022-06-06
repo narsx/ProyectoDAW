@@ -33,6 +33,7 @@ export class PeopleDetailComponent implements OnInit {
 
     this.mForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
+      _id: ['', [Validators.required]],
       surname: ['', [Validators.required, Validators.minLength(2)]],
       job: ['', [Validators.required, Validators.minLength(2)]],
       biography: ['', [Validators.required, Validators.minLength(2)]],
@@ -60,6 +61,7 @@ export class PeopleDetailComponent implements OnInit {
           birthday: formattedDated,
           biography: data.biography,
           picture: data.picture,
+          _id: this.id,
         })
 
       },
@@ -107,6 +109,7 @@ export class PeopleDetailComponent implements OnInit {
     person.biography = this.f.biography.value
     person.birthday = this.f.birthday.value
     person.picture = this.f.picture.value
+    person._id = this.f._id.value;
 
     return person
   }

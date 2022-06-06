@@ -39,9 +39,11 @@ export class MenuComponent implements OnInit {
 
   upload() {
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(["dashboard/people/new"])
+      this.router.navigate(["dashboard/people/new"]);
+      return true;
     } else {
-      this.router.navigate(["/login"])
+      this.router.navigate(["/login"]);
+      return false;
     }
   }
 
