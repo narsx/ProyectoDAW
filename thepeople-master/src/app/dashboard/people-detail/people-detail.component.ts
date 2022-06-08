@@ -16,6 +16,10 @@ export class PeopleDetailComponent implements OnInit {
   id = ""
   birthday: string = ""
   mForm: FormGroup
+  error: boolean =false;
+  errortxt: String= "";
+  success: boolean = false;
+  sucesstxt:String="";
 
   constructor(private router: Router, private fb: FormBuilder, private route: ActivatedRoute, private service: PeopleService) {
     this.router.events.subscribe(route => {
@@ -66,11 +70,13 @@ export class PeopleDetailComponent implements OnInit {
 
       },
         error => {
-          console.log("Error:", error);
+          this.errortxt=error;
+          this.error=true;
         }
       );
     } else {
-      console.log("Estamos creando un personaje")
+      this.sucesstxt="Personaje Creado";
+      this.success=true;
     }
   }
 
@@ -80,9 +86,10 @@ export class PeopleDetailComponent implements OnInit {
     this.service.updatePeople(person).subscribe((data) => {
       console.log(data)
     },
-      error => {
-        console.log("Error:", error);
-      }
+    error => {
+      this.errortxt=error;
+      this.error=true;
+    }
     );
   }
 
@@ -93,9 +100,10 @@ export class PeopleDetailComponent implements OnInit {
       console.log(data)
       this.router.navigate(["/dashboard"])
     },
-      error => {
-        console.log("Error:", error);
-      }
+    error => {
+      this.errortxt='Error al crear el personaje';
+      this.error=true;
+    }
     );
    
   }

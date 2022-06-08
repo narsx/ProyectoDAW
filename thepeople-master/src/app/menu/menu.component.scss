@@ -27,6 +27,19 @@
             background-color: $cOrangeHover;
         }
     }
+    .btn-login {
+        background: $cCyanShadow;
+        box-shadow: 0px 2px 15px rgba(9, 149, 162, 0.343);
+        border-radius: 15px;
+        color: #fff;
+        padding: 13px 25px;
+        margin-left: 25px;
+        text-decoration: none;
+        &:hover {
+            color: #fff;
+            background-color: $cOrangeHover;
+        }
+    }
 }
 
 .navbar-light.white {
